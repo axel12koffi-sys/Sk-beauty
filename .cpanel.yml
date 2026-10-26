@@ -3,6 +3,6 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/skbeauty/public_html/
-    - /bin/cp index.html rendez-vous.html conditions.html confidentialite.html robots.txt sitemap.xml .htaccess $DEPLOYPATH
+    - /bin/cp index.html galerie.html rendez-vous.html conditions.html confidentialite.html robots.txt sitemap.xml .htaccess $DEPLOYPATH
     - /bin/cp -R assets $DEPLOYPATH
     - /bin/cp -R api $DEPLOYPATH
