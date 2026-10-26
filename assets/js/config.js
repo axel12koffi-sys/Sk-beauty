@@ -55,13 +55,13 @@ window.SK_CONFIG = {
     enfants: {
       label: "Enfants",
       styles: [
-        { name: "Tresses simples", price: "" },
-        { name: "Cornrows (tresses collées)", price: "" },
-        { name: "Tresses avec rajouts", price: "" },
-        { name: "Twists (vanilles)", price: "" },
-        { name: "Box braids", price: "" },
-        { name: "Coiffure avec perles", price: "" },
-        { name: "Freestyle", price: "" }
+        { name: "Tresses simples", price: "dès 40 $" },
+        { name: "Cornrows (tresses collées)", price: "dès 50 $" },
+        { name: "Tresses avec rajouts", price: "dès 80 $" },
+        { name: "Twists (vanilles)", price: "dès 70 $" },
+        { name: "Box braids", price: "dès 80 $" },
+        { name: "Coiffures avec perles", price: "dès 50 $" },
+        { name: "Freestyle", price: "dès 60 $" }
       ]
     },
     hommes: {
