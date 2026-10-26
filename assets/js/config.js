@@ -12,7 +12,7 @@ window.SK_CONFIG = {
   //    > « Ajouter votre réservation à un site existant » > Obtenir l'URL.
   //    S'il est rempli : les vrais créneaux et le paiement des 20 $ se font
   //    sur Square (disponibilités en temps réel + politique de prépaiement).
-  squareBookingUrl: "",
+  squareBookingUrl: "https://app.squareup.com/appointments/book/oyvjyq9ygr8iej/LXP82AAA01BKB/start",
 
   // 2) Lien de paiement Square de 20 $ (utilisé seulement si
   //    squareBookingUrl est vide). Tableau de bord Square >
