@@ -7,7 +7,7 @@
  */
 
 /* ===================== CONFIGURATION ===================== */
-const SALON_EMAIL = 'ladyskinstitute@gmail.com';     // reçoit les demandes
+const SALON_EMAIL = 'sikirouanrafathaaa@gmail.com';     // reçoit les demandes
 const FROM_EMAIL  = 'noreply@skbeautysalon.com';     // créer cette adresse dans le cPanel Obambu
 const SALON_NAME  = 'SK Beauty';
 const SALON_PHONE = '(819) 635-3783';
