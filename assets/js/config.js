@@ -17,7 +17,7 @@ window.SK_CONFIG = {
   // 2) Lien de paiement Square de 20 $ (utilisé seulement si
   //    squareBookingUrl est vide). Tableau de bord Square >
   //    Paiements en ligne > Liens de paiement > Créer un lien (montant fixe 20 $).
-  squareDepositLink: "",
+  squareDepositLink: "https://square.link/u/401MXp2M",
 
   // 3) Liens de paiement Square pour la boutique (un lien par produit).
   squareProductLinks: {
