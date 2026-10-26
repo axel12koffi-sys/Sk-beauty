@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prendre rendez-vous — SK Beauty</title>
+  <meta name="description" content="Réservez votre coiffure chez SK Beauty : choisissez votre style, la longueur, les mèches et votre créneau. Frais de réservation de 20 $ payables en ligne avec Square.">
+  <link rel="canonical" href="https://www.skbeautysalon.com/rendez-vous.html">
+  <meta name="theme-color" content="#24150D">
+  <link rel="icon" href="assets/img/favicon-48.png" type="image/png" sizes="48x48">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html" aria-label="SK Beauty — accueil">
+        <img class="brand-icon" src="assets/img/logo-icon.png" alt="" width="52" height="52">
+        <span class="brand-text">
+          <span class="brand-name">SK<span class="brand-accent">BEAUTY</span></span>
+          <span class="brand-tag">Salon · cheveux naturels</span>
+        </span>
+      </a>
+      <div class="header-actions" style="gap:24px">
+        <a href="tel:+18196353783" style="color:var(--ink);text-decoration:none;font-size:14px" class="hide-sm">Une question ? (819) 635-3783</a>
+        <a class="link-arrow" href="index.html">← Retour au site</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu" class="booking-page">
+    <div class="container">
+      <div class="booking-head">
+        <span class="eyebrow">Ouvert 7 jours sur 7</span>
+        <h1>Prendre rendez-vous</h1>
+        <p>Décrivez précisément votre coiffure : nous préparons le temps et le matériel nécessaires avant votre arrivée.</p>
+      </div>
+
+      <noscript><p class="form-alert">Activez JavaScript pour réserver en ligne, ou appelez-nous au (819) 635-3783.</p></noscript>
+
+      <ol class="stepper" id="stepper" aria-label="Étapes de la réservation"></ol>
+
+      <div class="booking-layout">
+        <form class="booking-main" id="booking-form" novalidate enctype="multipart/form-data">
+          <!-- Anti-spam : ce champ doit rester vide -->
+          <div class="hp" aria-hidden="true">
+            <label for="website">Site web</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <!-- Étape : coiffure -->
+          <section class="panel" data-step="coiffure" aria-labelledby="t-coiffure">
+            <div class="panel-head">
+              <h2 id="t-coiffure" tabindex="-1">Quelle coiffure souhaitez-vous ?</h2>
+              <p>Choisissez la catégorie, puis le style.</p>
+            </div>
+            <fieldset>
+              <legend>Pour qui ?</legend>
+              <div class="choice-grid" id="cat-list"></div>
+            </fieldset>
+            <fieldset>
+              <legend>Style de coiffure</legend>
+              <div class="chip-row" id="style-list"></div>
+            </fieldset>
+          </section>
+
+          <!-- Étape : détails -->
+          <section class="panel" data-step="details" aria-labelledby="t-details" hidden>
+            <div class="panel-head">
+              <h2 id="t-details" tabindex="-1">Les détails de votre coiffure</h2>
+              <p>Ces précisions nous permettent d'estimer la durée et le prix exact.</p>
+            </div>
+            <fieldset>
+              <legend>Longueur souhaitée</legend>
+              <div class="chip-row" id="len-list"></div>
+            </fieldset>
+            <fieldset>
+              <legend>Grosseur des tresses</legend>
+              <div class="chip-row" id="size-list"></div>
+            </fieldset>
+            <fieldset>
+              <legend>Mèches</legend>
+              <div class="choice-grid" id="hair-list"></div>
+            </fieldset>
+            <fieldset>
+              <legend>Options <span class="opt">(facultatif)</span></legend>
+              <div class="chip-row" id="extra-list"></div>
+            </fieldset>
+          </section>
+
+          <!-- Étape : date & heure (seulement sans Square Appointments) -->
+          <section class="panel" data-step="date" aria-labelledby="t-date" hidden>
+            <div class="panel-head">
+              <h2 id="t-date" tabindex="-1">Quand souhaitez-vous venir ?</h2>
+              <p>Choisissez votre jour et votre heure préférés. Le salon confirme le créneau après le paiement des frais de réservation.</p>
+            </div>
+            <fieldset>
+              <legend>Jour</legend>
+              <div class="day-grid" id="day-list"></div>
+            </fieldset>
+            <fieldset>
+              <legend>Heure</legend>
+              <div class="slot-grid" id="slot-list"></div>
+            </fieldset>
+          </section>
+
+          <!-- Étape : coordonnées -->
+          <section class="panel" data-step="coordonnees" aria-labelledby="t-coord" hidden>
+            <div class="panel-head">
+              <h2 id="t-coord" tabindex="-1">Vos coordonnées</h2>
+              <p>Pour vous envoyer la confirmation et vous joindre si besoin.</p>
+            </div>
+            <div class="fields">
+              <div class="field">
+                <label for="name">Prénom et nom *</label>
+                <input id="name" name="name" type="text" autocomplete="name" required maxlength="100">
+              </div>
+              <div class="field">
+                <label for="phone">Téléphone *</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="30" placeholder="(819) 000-0000">
+              </div>
+              <div class="field">
+                <label for="email">Courriel <span class="opt">(pour recevoir la confirmation)</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" maxlength="150" placeholder="vous@exemple.com">
+              </div>
+              <div class="field">
+                <label for="photo">Photo d'inspiration <span class="opt">(facultatif)</span></label>
+                <input id="photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp,image/heic">
+                <span class="help">JPG, PNG ou WEBP, 5 Mo maximum.</span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="notes">Précisions <span class="opt">(couleur des mèches, cuir chevelu sensible, allergies…)</span></label>
+              <textarea id="notes" name="notes" rows="4" maxlength="1000"></textarea>
+            </div>
+            <div class="consent">
+              <div class="row">
+                <input id="accept" name="accept" type="checkbox" value="1" required>
+                <label for="accept">J'accepte les <a href="conditions.html" target="_blank">conditions de réservation</a> et je comprends que des frais de 20 $ sont requis pour confirmer mon rendez-vous. *</label>
+              </div>
+            </div>
+          </section>
+
+          <!-- Étape : récapitulatif -->
+          <section class="panel" data-step="recap" aria-labelledby="t-recap" hidden>
+            <div class="panel-head">
+              <h2 id="t-recap" tabindex="-1">Vérifiez votre demande</h2>
+              <p>Tout est correct ? Envoyez votre demande, puis réglez les frais de réservation sur Square.</p>
+            </div>
+            <dl class="recap" id="recap"></dl>
+            <div class="square-box">
+              <strong>Paiement sécurisé par Square</strong>
+              <p id="square-explain">Carte de crédit ou de débit, Apple Pay ou Google Pay.</p>
+            </div>
+          </section>
+
+          <!-- Succès -->
+          <section class="panel success" data-step="success" aria-labelledby="t-success" hidden>
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" aria-hidden="true"><circle cx="36" cy="36" r="35" stroke="#8C5A2E" stroke-width="2"/><path d="M23 37l9 9 17-19" stroke="#8C5A2E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <h2 id="t-success" tabindex="-1" class="h2">Demande reçue, <span id="s-first">merci</span> !</h2>
+            <div class="ref"><span>Numéro de demande</span><strong id="s-ref">SK-0000</strong></div>
+            <p class="muted" id="s-text" style="margin:0;max-width:520px"></p>
+            <div class="btn-row" style="justify-content:center">
+              <a class="btn btn-primary" id="s-pay" href="#" target="_blank" rel="noopener" hidden>Payer 20 $ avec Square</a>
+              <a class="btn btn-outline" href="index.html">Retour au site</a>
+            </div>
+          </section>
+
+          <div class="form-alert" id="form-alert" role="alert" hidden></div>
+
+          <div class="form-nav" id="form-nav">
+            <button type="button" class="btn btn-outline" id="btn-back" hidden>← Retour</button>
+            <div class="right">
+              <span class="form-hint" id="form-hint" aria-live="polite"></span>
+              <button type="button" class="btn btn-primary" id="btn-next">Continuer</button>
+            </div>
+          </div>
+        </form>
+
+        <aside class="summary" aria-label="Votre réservation">
+          <h2>Votre réservation</h2>
+          <dl id="summary"></dl>
+          <div class="fee"><span>Frais de réservation</span><strong id="fee">20,00 $</strong></div>
+          <div class="help-box">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D9AE7A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink:0"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg>
+            <span>Besoin d'aide pour choisir ? Écrivez-nous sur <a href="https://wa.me/18196353783" target="_blank" rel="noopener">WhatsApp</a>.</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:0;padding-top:0">
+        <span>© <span data-year>2026</span> SK Beauty · <a href="conditions.html" style="color:inherit">Conditions</a> · <a href="confidentialite.html" style="color:inherit">Confidentialité</a></span>
+        <span>Site réalisé par OXO Digital</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/booking.js"></script>
+</body>
+</html>

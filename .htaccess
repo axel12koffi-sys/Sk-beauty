@@ -1,0 +1,43 @@
+# SK Beauty — configuration Apache / LiteSpeed (cPanel)
+
+# Forcer HTTPS et le www
+RewriteEngine On
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.skbeautysalon.com%{REQUEST_URI} [L,R=301]
+
+# Anciennes adresses WordPress -> nouvelles pages
+RedirectMatch 301 ^/prise-de-rendez-vous/?$ /rendez-vous.html
+RedirectMatch 301 ^/nos-services/?$ /#coiffures
+RedirectMatch 301 ^/catalogue/?$ /#coiffures
+RedirectMatch 301 ^/a-propos(-2)?/?$ /#salon
+RedirectMatch 301 ^/contact/?$ /#contact
+RedirectMatch 301 ^/boutique(-clone)?/?$ /#boutique
+RedirectMatch 301 ^/produit/.*$ /#boutique
+
+# Pas de listing de dossiers
+Options -Indexes
+
+# En-têtes de sécurité
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# Cache navigateur des fichiers statiques
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/json
+</IfModule>
