@@ -35,18 +35,21 @@ window.SK_CONFIG = {
   slots: ["09:00", "10:30", "12:00", "13:30", "15:00", "16:30", "18:00"],
 
   /* ---------- CATALOGUE ----------
-     price : texte affiché (ex. "dès 120 $"). Laisser "" pour masquer. */
+     price : texte affiché (ex. "dès 120 $"). Laisser "" pour masquer. Prix en CAD. */
   catalogue: {
     femmes: {
       label: "Femmes",
       styles: [
-        { name: "Knotless braids", price: "" },
-        { name: "Box braids", price: "" },
-        { name: "Twists", price: "" },
-        { name: "Cornrows", price: "" },
-        { name: "Demi-rasta", price: "" },
-        { name: "Chignon avec frontal", price: "" },
-        { name: "Défaire les tresses", price: "" }
+        { name: "Knotless braids", price: "160 – 250 $" },
+        { name: "Box braids · Tresses", price: "100 – 280 $" },
+        { name: "Micro twists · Vanilles", price: "dès 150 $" },
+        { name: "Cornrows · Tresses collées", price: "dès 80 $" },
+        { name: "Demi-rasta", price: "dès 150 $" },
+        { name: "Chignon avec frontal", price: "dès 100 $" },
+        { name: "Défaire les tresses", price: "dès 40 $" },
+        { name: "Pose de perruque", price: "50 $" },
+        { name: "Resserrage de micro locs", price: "100 – 200 $" },
+        { name: "Resserrage de locs", price: "150 $" }
       ]
     },
     enfants: {
@@ -64,13 +67,13 @@ window.SK_CONFIG = {
     hommes: {
       label: "Hommes",
       styles: [
-        { name: "Tresses (braids)", price: "" },
-        { name: "Cornrows", price: "" },
-        { name: "Freestyle", price: "" },
-        { name: "Box braids", price: "" },
-        { name: "Tresses avec rajouts", price: "" },
-        { name: "Twists (vanilles)", price: "" },
-        { name: "Locks (dreads)", price: "" }
+        { name: "Tresses (braids)", price: "dès 60 $" },
+        { name: "Cornrows", price: "dès 60 $" },
+        { name: "Freestyle", price: "dès 75 $" },
+        { name: "Box braids", price: "dès 100 $" },
+        { name: "Tresses avec rajouts", price: "dès 80 $" },
+        { name: "Twists (vanilles)", price: "dès 75 $" },
+        { name: "Locks (dreads)", price: "dès 100 $" }
       ]
     }
   },
