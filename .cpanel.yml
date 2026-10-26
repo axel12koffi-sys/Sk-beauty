@@ -1,9 +1,8 @@
 ---
 # Déploiement cPanel (Git Version Control > Gérer > Déployer HEAD)
-# Remplacer NOM_UTILISATEUR par l'identifiant cPanel Obambu.
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/NOM_UTILISATEUR/public_html/
+    - export DEPLOYPATH=/home/skbeauty/public_html/
     - /bin/cp index.html rendez-vous.html conditions.html confidentialite.html robots.txt sitemap.xml .htaccess $DEPLOYPATH
     - /bin/cp -R assets $DEPLOYPATH
     - /bin/cp -R api $DEPLOYPATH
