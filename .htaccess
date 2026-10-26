@@ -1,5 +1,8 @@
 # SK Beauty — configuration Apache / LiteSpeed (cPanel)
 
+# Page d'accueil : le site statique passe avant WordPress (index.php)
+DirectoryIndex index.html index.php
+
 # Forcer HTTPS et le www
 RewriteEngine On
 RewriteCond %{HTTPS} off [OR]
