@@ -276,7 +276,7 @@
     els.next.setAttribute("aria-disabled", msg ? "true" : "false");
     els.hint.textContent = msg;
     els.back.hidden = current === 0;
-    els.next.textContent = step === "recap" ? "Envoyer ma demande" : (steps[current + 1] === "recap" ? "Vérifier ma demande" : "Continuer");
+    els.next.textContent = step === "recap" ? (useSquareBooking ? "Choisir mon créneau sur Square →" : "Envoyer ma demande") : (steps[current + 1] === "recap" ? "Vérifier ma demande" : "Continuer");
   }
 
   function showPanel(name) {
@@ -347,6 +347,11 @@
         success(res.ref);
       })
       .catch(function (err) {
+        if (useSquareBooking || depositLink) {
+          // Le courriel n'est pas parti, mais la cliente peut quand même réserver sur Square.
+          success(localRef(), true);
+          return;
+        }
         showAlert((err && err.message ? err.message + " " : "") + "Réessayez, ou écrivez-nous sur WhatsApp au (819) 635-3783.");
         els.next.disabled = false;
         els.back.disabled = false;
@@ -354,7 +359,18 @@
       });
   }
 
-  function success(ref) {
+  function localRef() {
+    var d = new Date();
+    return "SK-" + String(d.getFullYear()).slice(2) + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0") + "-" + Math.floor(1000 + Math.random() * 9000);
+  }
+
+  function detailsText() {
+    var extras = getExtras();
+    return [getVal("category"), getVal("style"), getVal("length"), getVal("size"), getVal("hair")]
+      .concat(extras).filter(Boolean).join(" · ");
+  }
+
+  function success(ref, mailFailed) {
     sent = true;
     var first = $("name").value.trim().split(/\s+/)[0] || "merci";
     $("s-first").textContent = first;
@@ -366,7 +382,9 @@
       pay.href = cfg.squareBookingUrl;
       pay.textContent = "Choisir mon créneau et payer " + fee + " $";
       pay.hidden = false;
-      text.textContent = "Dernière étape : choisissez votre créneau en temps réel sur Square et réglez les " + fee + " $ de réservation. Indiquez votre numéro " + ref + " dans la note de réservation.";
+      text.textContent = mailFailed
+        ? "Dernière étape : choisissez votre créneau sur Square et réglez les " + fee + " $. Copiez ceci dans la note de réservation Square : " + ref + " — " + detailsText()
+        : "Dernière étape : choisissez votre créneau en temps réel sur Square et réglez les " + fee + " $ de réservation. Indiquez votre numéro " + ref + " dans la note de réservation.";
     } else if (depositLink) {
       pay.href = depositLink;
       pay.textContent = "Payer " + fee + " $ avec Square";
